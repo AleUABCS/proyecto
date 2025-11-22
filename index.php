@@ -49,7 +49,7 @@
         <?php foreach($classes as $class) : ?>
             <section id = <?=$class['id']?>>
                 <H2><?=$class['name']?></H2>
-                <?=$class['desc']?>
+                <?=$class['description']?>
                 <br><br>
             </section>
         <?php endforeach ?>
@@ -256,10 +256,7 @@
             </form>
 
             <br>
-            <footer>
-                Publicado el 02 de noviembre del 2005
-            </footer>
-
+            <?php require 'src/views/layouts/footer.php'?>
 
         </main>
     </div>

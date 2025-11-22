@@ -1,10 +1,29 @@
 <?php 
 
 $config = require __DIR__.'/../config/config.php';
+require __DIR__.'/../config/database.php';
+
 define('BASE_PATH', $config['base_url']);
 define('ASSETS_PATH', $config['assets_url']);
 define('SRC_PATH', $config['src_url']);
 
+function getClasses() {
+    $pdo = getPDO();
+
+    try {
+        $sql = "SELECT * FROM classes";
+        $stmt = $pdo->query($sql);
+        $classes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $classes;
+    }catch (PDOException $e) {
+        error_log("Error al consultar la base de datoso: ". $e->getMessage());
+        return [];
+    }
+}
+
+//Este ya no se va a usar
+/*
 function getClasses () {
     return [
         [
@@ -47,3 +66,4 @@ function getClasses () {
         ]
     ];
 }
+    */
